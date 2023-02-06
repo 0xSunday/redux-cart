@@ -1,13 +1,15 @@
-import Cart from './components/Cart/Cart';
-import Layout from './components/Layout/Layout';
-import Products from './components/Shop/Products';
-
+import Cart from "./components/Cart/Cart";
+import Layout from "./components/Layout/Layout";
+import Products from "./components/Shop/Products";
+import { useSelector } from "react-redux";
 function App() {
+  const buttonToggle = useSelector((store) => store.button.button);
+  const items = useSelector((store) => store.cart.item);
   return (
     <Layout>
-      <Cart />
+      {buttonToggle && items > 0 && <Cart />}
+
       <Products />
-   
     </Layout>
   );
 }
